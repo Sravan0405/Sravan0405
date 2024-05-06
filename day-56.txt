@@ -1,0 +1,273 @@
+Methods:
+--------
+we have the three types of methods thay are
+1.Instance method
+2.Class method
+3.static method
+
+1.Instance method:
+-----------------
+we can declare the Instance method,don't required any decorator(function)
+Instance method, have the default parameter is self.
+Instance method, which access the both class level(stati) and instance(non-static) data.
+Instance method, which is acctssed from out side the class by using reference variable only.
+
+syn:
+----
+class class_name:
+	-----
+	----
+	def methode_name(self):
+		--------
+		--------
+ex;
+---
+class test:
+    x=10
+    def __init__(self):
+        self.y=20
+    def m1(self):
+        self.z=30
+        print(test.x)
+        print(self.y)
+        print(self.z)
+t=test()
+t.m1()
+
+o/p:
+----
+10
+20
+30
+
+2.Class method:
+---------------
+we can declare the Class method,we need required class method decorator(function)
+Class method, have the default parameter is cls.
+Class method, which access the class level(stati) data.
+Class method, which is acctssed from out side the class by using reference variable and class name
+
+ex:
+---
+class test:
+    x=10
+    def __init__(self):
+        self.y=20
+    @classmethod
+    def m1(cls):
+        print(test.x)
+        #print(self.y)
+t=test()
+t.m1()
+test.m1()
+
+o/p:
+---
+10
+10
+
+3.static method:
+----------------
+we can declare the static method,we need required static method decorator(function)
+static method, we don't have any default parameter.
+static method, which access the only local data and static data.
+static method, which is accessed from out side the class by using reference variable and class name
+
+ex
+----
+class test:
+    x=10
+    def __init__(self):
+        self.y=20
+    @staticmethod
+    def m1():
+       z=30
+       print(z)
+       #print(self.y)
+       print(test.x)
+t=test()
+t.m1()
+test.m1()
+
+o/p;
+---
+30
+10
+30
+10
+
+ex:
+---
+class test:
+    x=10
+    def __init__(self):
+        self.y=20
+    def m1(self):
+        self.z=30
+        print(test.x)
+        print(self.y)
+        print(self.z)
+    @classmethod
+    def m2(cls):
+        print(test.x)
+        #print(self.y)
+    @staticmethod
+    def m3():
+       z=30
+       print(z)
+       #print(self.y)
+       print(test.x)
+t=test()
+t.m1()
+print("*"*10)
+t.m2()
+test.m2()
+print("*"*10)
+t.m3()
+test.m3()
+
+o/p:
+---
+10
+20
+30
+**********
+10
+10
+**********
+30
+10
+30
+10
+
+nested classes:
+---------------
+we can define nested classes, class inside another class.
+
+syn:
+---
+class class_name:
+	----
+	----
+	class class_name:
+		------
+		------
+
+when we are using nested classes:
+----------------------------------
+without existing of one class object there in no chance to existing on another type of object in that case we are using nested class.
+
+ex:
+---
+class animal:
+    legs=4
+    class cat:
+        def bark(self):
+            print("the car having %d legs"%(animal.legs))
+            print("the cat barking maw..mawwoo....")
+    class dog:
+        def bark(self):
+            print("the dog have %d legs:"%(animal.legs))
+            print("dog barking bow... bow.....")
+a=animal()
+c=a.cat()
+c.bark()
+d=a.dog()
+d.bark()
+
+				or
+class animal:
+    legs=4
+    class cat:
+        def bark(self):
+            print("the car having %d legs"%(animal.legs))
+            print("the cat barking maw..mawwoo....")
+    class dog:
+        def bark(self):
+            print("the dog have %d legs:"%(animal.legs))
+            print("dog barking bow... bow.....")
+a=animal().cat().bark()
+a=animal().dog().bark()
+
+				or
+class animal:
+    legs=4
+    class cat:
+        def bark(self):
+            print("the car having %d legs"%(animal.legs))
+            print("the cat barking maw..mawwoo....")
+    class dog:
+        def bark(self):
+            print("the dog have %d legs:"%(animal.legs))
+            print("dog barking bow... bow.....")
+animal().cat().bark()
+animal().dog().bark()
+
+
+o/p:
+----
+the car having 4 legs
+the cat barking maw..mawwoo....
+the dog have 4 legs:
+dog barking bow... bow.....
+
+nested methods:
+---------------
+we can define nested methods, method inside another method.
+
+class class_name:
+	----
+	----
+	def method_name(self):
+		------
+		------
+		def method_name():
+			--------
+			--------
+			--------
+
+when we are using nested methods?:
+--------------------------------
+whenever we want to achive the reuseablility of code in that case we are using nested methods.
+
+ex:
+----
+class test:
+    print("hiii")
+    def operation(self):
+        print("hello")
+        self.x=10
+        self.y=20
+        print(self.x+self.y)
+        print("gud morning")
+        self.a="nandu"
+        self.b="reddy"
+        print(self.a+self.b)
+        print("h r u")
+t=test()
+t.operation()
+
+
+ex:
+---
+class test:
+    print("hiii")
+    def operation(self):
+        print("hello")
+        def add(x,y):
+            print(x+y)
+        add(10,20)
+        print("gud morning")
+        add('nandu','reddy')
+        print("h r u")
+t=test()
+t.operation()
+
+o/p:
+----
+hiii
+hello
+30
+gud morning
+nandureddy
+h r u
